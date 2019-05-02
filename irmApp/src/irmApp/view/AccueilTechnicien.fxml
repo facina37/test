@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="irmApp.view.AccueilTechnicienController">
+   <children>
+        <TabPane fx:id="tabpane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <tabs>
+            <Tab text="Patients">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                       <children>
+                           <AnchorPane layoutX="-8.0" prefHeight="400.0" prefWidth="70.0" style="-fx-background-color: #f2f6f7; -fx-border-color: #e2e2e2" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <children>
+                                   <ImageView fx:id="deco" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#setDeco" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="30.0">
+                                    <image>
+                                       <Image url="@deco.png" />
+                                    </image>
+                                    <effect>
+                                        <Lighting>
+                                           <bumpInput>
+                                              <Shadow />
+                                           </bumpInput>
+                                           <light>
+                                              <Light.Distant />
+                                           </light>
+                                        </Lighting>
+                                     </effect>
+                                 </ImageView>
+                                </children>
+                             </AnchorPane>
+                          <TableView fx:id="patientTable" layoutX="28.0" layoutY="58.0" prefHeight="405.0" prefWidth="719.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="120.0">
+                            <columns>
+                              <TableColumn fx:id="idColumn" prefWidth="47.0" text="ID" />
+                              <TableColumn fx:id="groupeColumn" prefWidth="74.0" text="Grp" />
+                              <TableColumn fx:id="lastNameColumn" prefWidth="215.0" text="Nom" />
+                              <TableColumn fx:id="firstNameColumn" prefWidth="220.0" text="Prénom" />
+                              <TableColumn fx:id="ageColumn" prefWidth="84.0" text="Age" />
+                              <TableColumn fx:id="statutColumn" prefWidth="131.0" text="Statut" />
+                              <TableColumn fx:id="sexeColumn" prefWidth="93.0" text="Sexe" />
+                              <TableColumn fx:id="gradeColumn" prefWidth="75.0" text="Grade" />
+                            </columns>
+                          </TableView>
+                          <Label layoutX="28.0" layoutY="15.0" text="Liste des patients" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="15.0">
+                             <font>
+                                <Font name="System Bold" size="30.0" />
+                             </font>
+                          </Label>
+                          <TextField fx:id="motcle" layoutX="522.0" layoutY="16.0" prefHeight="30.0" prefWidth="249.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="70.0">
+                             <font>
+                                <Font size="14.0" />
+                             </font></TextField>
+                          <Button defaultButton="true" layoutX="671.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleRechercher" text="Rechercher" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
+                             <font>
+                                <Font size="14.0" />
+                             </font></Button>
+                          <Button alignment="CENTER" layoutX="439.0" layoutY="727.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleAjout" prefWidth="50.0" text="Ajouter un IRM" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="410.0">
+                             <font>
+                                <Font name="System Bold" size="14.0" />
+                             </font></Button>
+                       </children></AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+        
+        
+        <GridPane fx:id="gridpane" hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="0.0" prefWidth="0.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="140.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="165.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="138.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="140.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="0.0" prefWidth="0.0" />
+            </columnConstraints>
+            <rowConstraints>
+                  <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+             <children>
+                  <Label fx:id="titre" text="Ajouter un examen" GridPane.columnIndex="1" GridPane.columnSpan="6">
+                  <font>
+                          <Font name="System Bold" size="24.0" />
+                  </font>
+                  </Label>
+                  <DatePicker fx:id="dateExamen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="138.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="idMachine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="138.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <TextField fx:id="volCrane" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <TextField fx:id="axeCrane" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <TextField fx:id="volTumeur" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                  <TextField fx:id="cho_cr" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <TextField fx:id="naa_cr" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <TextField fx:id="naa_cho" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                  <TextField fx:id="lip_cr" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <TextField fx:id="lac" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                  <TextField fx:id="rcbv" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                  <TextField fx:id="rcbf" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                  <TextField fx:id="mtt" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                  <TextField fx:id="ttp" maxHeight="25.0" maxWidth="93.0" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="4" GridPane.rowIndex="10">
+                  <GridPane.margin>
+                  </GridPane.margin>
+                  </TextField>
+                 <Button mnemonicParsing="false" onAction="#handleAnnuler" text="Annuler" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                    <font>
+                       <Font name="System Bold" size="18.0" />
+                    </font>
+                 </Button>
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAjoutExamen" text="Ajouter" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="11">
+                  <font>
+                          <Font name="System Bold" size="18.0" />
+                  </font></Button>
+                  <Label text="Date de l'examen :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="ID de la machine :" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Vol. crânien (mm3) :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Val. max axes crâne (mm) :" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Vol. tumeur (mm3) :" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="TTP :" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="rCBV :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="MTT :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="rCBF :" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Lac :" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Lip/Cr :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Naa/Cho :" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Naa/Cr :" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Cho/Cr :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <font>
+                          <Font size="14.0" />
+                  </font>
+                  </Label>
+                  <Label text="Informations générales" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="1">
+                  <font>
+                          <Font name="System Bold" size="18.0" />
+                  </font>
+                  </Label>
+                  <Label text="Informations Anatomiques" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="3">
+                  <font>
+                          <Font name="System Bold" size="18.0" />
+                  </font>
+                  </Label>
+                  <Label text="Données métaboliques" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5">
+                  <font>
+                          <Font name="System Bold" size="18.0" />
+                  </font>
+                  </Label>
+                  <Label text="Données perfusionnelles" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                  <font>
+                          <Font name="System Bold" size="18.0" />
+                  </font>
+                  </Label>
+                  <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="8" GridPane.valignment="TOP" />
+                  <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                  <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                  <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+             </children>
+             <padding>
+             </padding>
+          </GridPane>
+
+</children>
+</AnchorPane>

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="irmApp.view.AccueilMedecinController">
+   <children>       
+       <TabPane fx:id="tabpane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@theme.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+          <Tab text="Ajout prévisite">
+            <content>
+              
+              <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <AnchorPane layoutX="-8.0" prefHeight="400.0" prefWidth="70.0" style="-fx-background-color: #f2f6f7; -fx-border-color: #e2e2e2" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <children>
+                           <ImageView fx:id="deco" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#setDeco" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="30.0">
+                            <image>
+                               <Image url="@deco.png" />
+                            </image>
+                            <effect>
+                                <Lighting>
+                                   <bumpInput>
+                                      <Shadow />
+                                   </bumpInput>
+                                   <light>
+                                      <Light.Distant />
+                                   </light>
+                                </Lighting>
+                             </effect>
+                         </ImageView>
+                        </children>
+                     </AnchorPane>
+
+                        <TableView fx:id="patientTable" layoutX="30.0" layoutY="54.0" prefHeight="416.0" prefWidth="720.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="120.0">
+                          <columns>
+                            <TableColumn fx:id="idColumn" text="ID" />
+                            <TableColumn fx:id="groupeColumn" text="Grp" />
+                              <TableColumn fx:id="lastNameColumn" text="Nom" />
+                              <TableColumn fx:id="firstNameColumn" text="Prénom" />
+                              <TableColumn fx:id="ageColumn" text="Age" />
+                              <TableColumn fx:id="statutColumn" text="Statut" />
+                              <TableColumn fx:id="sexeColumn" text="Sexe" />
+                              <TableColumn fx:id="gradeColumn" text="Grade" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="30.0" layoutY="13.0" text="Liste des patients" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="15.0">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button defaultButton="true" layoutX="674.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRechercherPatients" text="Rechercher" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                        <Button alignment="BOTTOM_CENTER" layoutX="426.0" mnemonicParsing="false" onAction="#handleAjoutVisite" text="Ajouter une prévisite" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="390.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <TextField fx:id="motclePatient" layoutX="653.0" layoutY="16.0" prefHeight="30.0" prefWidth="228.0" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="70.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Vérification examens">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutX="-8.0" prefHeight="400.0" prefWidth="70.0" style="-fx-background-color: #f2f6f7; -fx-border-color: #e2e2e2" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                               <ImageView fx:id="decon" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#setDeco" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="30.0">
+                                <image>
+                                   <Image url="@deco.png" />
+                                </image>
+                                <effect>
+                                    <Lighting>
+                                       <bumpInput>
+                                          <Shadow />
+                                       </bumpInput>
+                                       <light>
+                                          <Light.Distant />
+                                       </light>
+                                    </Lighting>
+                                 </effect>
+                             </ImageView>
+                            </children>
+                         </AnchorPane>
+                        <Label layoutX="36.0" layoutY="14.0" text="Liste des examens à vérifier" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="15.0">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="427.0" layoutY="727.0" mnemonicParsing="false" onAction="#handleVerifExam" text="Vérifier un examen" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="390.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <TableView fx:id="examenTable" layoutX="36.0" layoutY="53.0" prefHeight="407.0" prefWidth="700.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="120.0">
+                          <columns>
+                            <TableColumn fx:id="idExamColumn" text="ID examen" />
+                            <TableColumn fx:id="dateColumn" text="Date" />
+                              <TableColumn fx:id="nomColumn" text="Nom du patient" />
+                              <TableColumn fx:id="prenomColumn" text="Prénom du patient" />
+                          </columns>
+                        </TableView>
+                        <Button defaultButton="true" layoutX="660.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleRechercherExamens" text="Rechercher" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                        <TextField fx:id="motcleExamen" layoutX="511.0" layoutY="15.0" prefHeight="30.0" prefWidth="230.0" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="70.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+
+
+
+          <GridPane fx:id="gridpane" hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="299.0" minWidth="0.0" prefWidth="0.0" />
+              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="458.0" minWidth="10.0" prefWidth="153.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="458.0" minWidth="0.0" prefWidth="128.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="346.0" minWidth="0.0" prefWidth="178.0" />
+              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="444.0" minWidth="10.0" prefWidth="109.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="172.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="439.0" minWidth="10.0" prefWidth="103.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="310.0" minWidth="0.0" prefWidth="0.0" />
+            </columnConstraints>
+            <rowConstraints>
+              <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="55.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="62.0" minHeight="0.0" prefHeight="34.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="64.0" minHeight="8.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="148.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="55.0" minHeight="0.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+             <children>
+                <Label fx:id="titre" text="Ajouter une prévisite" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.halignment="LEFT">
+                   <font>
+                      <Font name="System Bold" size="24.0" />
+                   </font>
+                   <opaqueInsets>
+                   </opaqueInsets>
+                   <padding>
+                   </padding></Label>
+                <Label prefHeight="27.0" prefWidth="341.0" text="Etape 1 : Informations prévisite" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                   <font>
+                      <Font name="System Bold" size="18.0" />
+                   </font></Label>
+                <DatePicker fx:id="dateVisite" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <ComboBox fx:id="typeLot" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <TextField fx:id="poids" maxWidth="175.0" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <TextField fx:id="freqCardiaque" maxWidth="175.0" prefWidth="175.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <TextField fx:id="tension" maxWidth="175.0" prefWidth="175.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                <TextField fx:id="leucocytes" maxWidth="175.0" prefWidth="175.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <TextField fx:id="hemoglobine" maxWidth="175.0" prefWidth="175.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <Button fx:id="ajoutVisite" mnemonicParsing="false" onAction="#handleAjoutPrevisite" text="Ajouter une prévisite" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                   <font>
+                      <Font name="System Bold" size="12.0" />
+                   </font></Button>
+                <Label fx:id="messageSucces" alignment="CENTER" prefHeight="17.0" prefWidth="509.0" text="Messages" textFill="#9a1818" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
+                <TextField fx:id="medicament" maxWidth="337.0" prefHeight="25.0" prefWidth="337.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+                <TextArea fx:id="raisonPrise" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                   <GridPane.margin>
+                   </GridPane.margin>
+                </TextArea>
+                <Button fx:id="ajoutMedicament" mnemonicParsing="false" onAction="#handleAjoutMedicament" text="Ajouter un médicament" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+                <Button fx:id="Terminer" mnemonicParsing="false" onAction="#handleTermine" text="Terminer" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="11">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+                <Label prefHeight="27.0" prefWidth="617.0" text="Etape 2 : Les médicaments" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                   <font>
+                      <Font name="System Bold" size="18.0" />
+                   </font>
+                </Label>
+                <Label text="Principe actif :" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Raison de la prise :" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Date de la prévisite :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Type de lot :" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Poids (Kg) : " GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Fréquence cardaque :" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Tension : " GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Taux de leucocytes :" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Label text="Taux d'hémoglobine :" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                   <font>
+                      <Font size="14.0" />
+                   </font>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="6" GridPane.valignment="TOP" />
+                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="11" GridPane.valignment="TOP" />
+             </children>
+             <padding>
+             </padding>
+          </GridPane>
+
+
+          
+          <GridPane fx:id="gridpaneExamen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="0.0" prefWidth="4.0" />
+              <ColumnConstraints hgrow="SOMETIMES" maxWidth="576.0" minWidth="10.0" prefWidth="314.0" />
+              <ColumnConstraints hgrow="SOMETIMES" maxWidth="451.0" minWidth="0.0" prefWidth="306.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="460.0" minWidth="10.0" prefWidth="281.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="460.0" minWidth="4.0" prefWidth="4.0" />
+      <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+      <RowConstraints />
+            </rowConstraints>
+             <children>
+                <Label fx:id="titreExam" text="Examen de Jean-Pierre Durand le 18/08/2018" GridPane.columnIndex="1" GridPane.columnSpan="4">
+                   <font>
+                      <Font name="System Bold" size="24.0" />
+                   </font>
+                </Label>
+                <Label text="Machine" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                   <font>
+                      <Font name="System Bold" size="20.0" />
+                   </font>
+                </Label>
+                <Label GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label fx:id="vol" text="Volumes" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                   <font>
+                      <Font name="System Bold" size="15.0" />
+                   </font>
+                </Label>
+                <Label fx:id="volCrane" text="Volume crânien :" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="axeCrane" text="Volume max. axe crânien :" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="volTumeur" text="Volume tumeur :" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="gradeMachine" text="Grade Machine :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="risqueTotal" text="Risque total :" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                 <Label fx:id="Examen" prefHeight="25.0" prefWidth="211.0" text="Examen" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                   <font>
+                      <Font name="System Bold" size="20.0" />
+                   </font>
+                </Label>
+                <Label fx:id="Metabo" prefHeight="25.0" prefWidth="211.0" text="Imagerie métabolique" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                   <font>
+                      <Font name="System Bold" size="15.0" />
+                   </font>
+                </Label>
+                <Label fx:id="perfu" text="Imagerie de perfusion" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                   <font>
+                      <Font name="System Bold" size="15.0" />
+                   </font>
+                </Label>
+                <Label fx:id="mtt" text="MTT :" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="cho_cr" text="Cho / Cr :" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="ttp" text="TTP :" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="naa_cr" text="NAA / Cr :" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="rcbv" text="rCBV :" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="naa_cho" text="NAA / Cho :" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="rcbf" text="rCBF :" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="lac" text="Lac :" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="lip_cr" prefHeight="19.0" prefWidth="306.0" text="Lip / Cr :" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="10">
+                   <font>
+                      <Font size="13.0" />
+                   </font></Label>
+                <Label fx:id="titreErreur" prefHeight="25.0" prefWidth="211.0" text="Erreur" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                   <font>
+                      <Font name="System Bold" size="20.0" />
+                   </font>
+                </Label>
+                <Label fx:id="messageErreur" text="erreur" textFill="#902525" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12">
+                   <font>
+                      <Font size="16.0" />
+                   </font></Label>
+                <RadioButton fx:id="suppression" mnemonicParsing="false" prefHeight="20.0" prefWidth="356.0" text="Suppression des données du dernier examen" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="13">
+                   <font>
+                      <Font size="16.0" />
+                   </font></RadioButton>
+                <RadioButton fx:id="refaire" mnemonicParsing="false" prefHeight="20.0" prefWidth="294.0" text="Refaire un examen dans 2 jours" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13">
+                   <font>
+                      <Font size="16.0" />
+                   </font></RadioButton>
+                <Button mnemonicParsing="false" onAction="#handleAnnuler" text="Annuler" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                    <font>
+                       <Font name="System Bold" size="18.0" />
+                    </font>
+                 </Button>
+                <Button fx:id="valideErreur" mnemonicParsing="false" onAction="#handleValideErreur" text="Valider" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                   <font>
+                      <Font name="System Bold" size="18.0" />
+                   </font></Button>
+                <Label fx:id="titreGrade" prefHeight="25.0" prefWidth="211.0" text="Choix du grade" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                   <font>
+                      <Font name="System Bold" size="20.0" />
+                   </font>
+                </Label>
+                <Button fx:id="valideGrade" mnemonicParsing="false" onAction="#handleValideGrade" text="Valider" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="13">
+                   <font>
+                      <Font name="System Bold" size="18.0" />
+                   </font></Button>
+                <ComboBox fx:id="grade" prefHeight="39.0" prefWidth="172.0" promptText="Grade" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
+                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="11" GridPane.valignment="TOP" />
+             </children>
+             <padding>
+             </padding>
+          </GridPane>
+
+          
+   </children>
+</AnchorPane>
